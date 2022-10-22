@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../stylesL.css" >
+	<title>Leilão</title>
+</head>
+
+<body>
+
+	<nav>
+		<H1>Leilao Friends And Technology</H1>
+		<div class="user-logged" th:if="${session.usuarioLogado}">
+			<strong th:text="${session.usuarioLogado}"></strong>
+
+			<form action="/logout" method="post">
+				<button class="button" type="submit">Sair</button>
+			</form>
+		</div>
+	</nav>
+
+
+	<div class="tamanho" th:if="${ms}">
+		<div class="alert-sucess">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong th:text="${ms}"></strong>
+		</div>
+	</div>
+
+	<div class="tamanho" th:if="${msg}">
+		<div class="alert">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong th:text="${msg}"></strong>
+		</div>
+	</div>
+
+	<div class="redirect-card">
+		<form action="/leiloes">
+			<a class="bt" th:href="@{leiloes}">
+				<button class="button">VOLTAR</button>
+			</a>
+		</form>
+
+		<form action="/login" th:if="${session.usuarioLogado} == null">
+			<a th:href="@{login}">
+				<button class="button">LOGIN</button>
+			</a>
+		</form>
+	</div>
+
+	<div class="img-leilao">
+		<h1>Imagem</h1>
+		<img alt="sample" data-th-src="*{'data:image/png;base64,'+image}" />
+	</div>
+
+
+	<section>
+		<div class="card-info1">
+			<div>
+				<span>
+					<b>Titulo:</b>
+				</span>
+				<span data-th-text="${leilao.titulo}"></span>
+			</div>
+			<div>
+				<span>
+					<b>Descrição:</b>
+				</span>
+				<span data-th-text="${leilao.descricao}"></span>
+			</div>
+		</div>
+
+
+		<div class="card-info2">
+			<div>
+				<span>
+					<b>Vendedor:</b>
+				</span>
+				<span data-th-text="${leilao.vendedor}"></span>
+			</div>
+
+			<div>
+				<span>
+					<b>Data de Cadastro:</b>
+				</span>
+				<span data-th-text="${leilao.dataCadastro}"></span>
+			</div>
+			<div>
+				<span>
+					<b>Categoria:</b>
+				</span>
+				<span data-th-text="${leilao.categoria}"></span>
+			</div>
+			<div>
+				<span>
+					<b>Status:</b>
+				</span>
+				<span data-th-text="${leilao.status}"></span>
+			</div>
+			<div>
+				<span>
+					<b>Data Limite:</b>
+				</span>
+				<span th:id="dataformatada"></span>
+				<script th:inline="javascript">
+					var dataString = /*[[${leilao.dataLimite}]]*/
+                            var [dateComponents] = dataString.split(' ');
+					var dataFinal = dateComponents;
+					document.getElementById('dataformatada').innerHTML = dataFinal;
+				</script>
+			</div>
+			<div>
+				<span>
+					<b>Valor Inicial:</b>
+				</span>
+				<span
+					data-th-text="'R$ ' + ${#numbers.formatDecimal(leilao.valorInicial, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
+			</div>
+			<div>
+				<span>
+					<b>Lance Mínimo:</b>
+				</span>
+				<span data-th-text="'R$ ' + ${#numbers.formatDecimal(leilao.lanceMinimo, 1, 'DEFAULT', 2, 'DEFAULT')}">
+
+					<script th:inline="javascript">
+						var dataString = /*[[${leilao.dataLimite}]]*/
+            var [dateComponents] = dataString.split(' ');
+						var dataFinal = dateComponents;
+						document.getElementById('dataformatada').innerHTML = dataFinal;
+					</script>
+				</span>
+			</div>
+		</div>
+
+	</section>
+
+	<header>
+		<h3>Para participar do leilão, dê um lance:</h3>
+
+		<p class="text">
+			Lembre de respeitar o valor inicial e valor minimo, proposto pelo
+			vendedor.
+			<br>
+			Caso o contrário, não será permitido dar lances.
+		</p>
+
+		<div class="lance-form">
+			<span>Informe o valor:</span>
+			<form method="get" th:action="@{/darLance}">
+				<input name="idLeilao" type="hidden" th:value="${leilao.id}">
+				<input name="valorLance" type="number" th:name="valorLance" required>
+				<button class="button" type="submit">NOVO LANCE</button>
+			</form>
+		</div>
+		<div class="alertsds" role="alertsads" th:if="${msg}">
+			<strong th:text="${msg}"></strong>
+		</div>
+	</header>
+
+	<div class="card-table">
+		<h1>LANCES</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Comprador</th>
+					<th>Data do Lance</th>
+					<th>Valor do Lance</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="lance : ${lances}">
+					<td data-th-text="${lance.comprador}" data-label="Comprador"></td>
+					<td data-th-text="${lance.dataLance}" data-label="Data do Lance"></td>
+					<td data-th-text="'R$ ' + ${#numbers.formatDecimal(lance.valorLance, 1, 'DEFAULT', 2, 'DEFAULT')}"
+						data-label="Valor do Lance"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</body>
+
+</html>

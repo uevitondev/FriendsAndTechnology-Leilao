@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* {
+	font-family: "Roboto", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	background-color: white;
+	color: black;
+}
+
+.tamanho {
+	display: flex;
+	justify-content: center;
+}
+
+.alert {
+	width: 400px;
+	text-align: center;
+	color: white;
+	background-color: #f44336;
+	padding: 10px;
+}
+
+.alert-sucess {
+	width: 400px;
+	text-align: center;
+	color: white;
+	background-color: yellowgreen;
+	padding: 10px;
+}
+
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+
+.user-logged {
+	justify-content: space-around;
+}
+
+.redirect-card {
+	display: flex;
+	justify-content: center;
+}
+
+nav {
+	width: 100%;
+	max-width: 80%;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 10px;
+	padding: 10px 10px;
+	justify-content: space-around;
+	display: flex;
+	margin-top: 40px;
+	margin-bottom: 5px;
+}
+
+header {
+	width: 100%;
+	max-width: 80%;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 250px;
+}
+
+header div {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.filter-form {
+	align-items: center;
+	display: flex;
+}
+
+.filter-form label {
+	color: white;
+	font-weight: bold;
+}
+
+.filter-table {
+	display: flex;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+.filter-table label {
+	font-size: 20px;
+}
+
+.filter-table select {
+	font-size: 15px;
+}
+
+.card-table {
+	background-color: slateblue;
+	width: 100%;
+	max-width: 80%;
+	margin: 0 auto;
+	border-radius: 10px;
+	padding: 10px 10px;
+	margin-bottom: 100px;
+}
+
+.table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.table thead {
+	height: 55px;
+	font-size: 16px;
+	color: whitesmoke;
+	font-weight: 700;
+}
+
+.table tbody {
+	font-size: 14px;
+	font-weight: 400;
+	color: whitesmoke;
+	text-align: center;
+}
+
+.table tbody tr {
+	background-color: #181818;
+	border-top: 1px solid white;
+}
+
+.table td,
+.table th {
+	padding: 15px 15px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.table tbody tr:hover>td {
+	background-color: tan;
+}
+
+.table tbody tr:nth-child(even) {
+	background-color: gray;
+}
+
+@media (max-width : 576px) {
+
+	.alert,
+	.alert-sucess {
+		width: 300px;
+	}
+
+	nav {
+		max-width: 100%;
+	}
+
+	header {
+		max-width: 100%;
+	}
+
+	.filter-form {
+		display: block;
+	}
+
+	.card-table {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.table thead {
+		display: none;
+	}
+
+	.table,
+	.table tbody,
+	.table tr,
+	.table td {
+		display: block;
+		width: 100%;
+	}
+
+	.table tr {
+		margin-top: 30px;
+		margin-bottom: 30px;
+		border-radius: 2%;
+	}
+
+	.table td {
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+
+	.table td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 100%;
+		padding-left: 10px;
+		font-weight: bold;
+		font-size: 15px;
+		text-align: left;
+	}
+}
+
+
+
+.card-cronometro {
+	font-weight: bold;
+	background-color: slateblue;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.button-leilao {
+	background-color: rgba(1, 120, 255, 0.6);
+	text-align: center;
+	font-size: 400;
+	color: white;
+	font-weight: bold;
+	border-radius: 8px;
+	border: 1px solid white;
+	padding: 10px;
+}
+
+
+.button {
+	text-decoration: none;
+	background-color: rgba(1, 120, 255, 0.6);
+	color: rgba(250, 250, 250, 0.9);
+	padding: 5px;
+	margin: 10px;
+	border: 5px solid rgba(1, 120, 255, 0.6);
+	border-radius: 5px;
+
+}
+
+.button:visited {
+	color: white;
+}
+
+.button:hover {
+	padding: 10px;
+}
+
+.button:active {
+	background-color: rgba(1, 120, 255, 1);
+	padding: 8px;
+}

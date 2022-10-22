@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../stylesIndex.css">
+	
+	<title>Home</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="content">
+			<div>
+				<h2 class="title">Leilão F&T</h2>
+				<h3>Bem vindo ao Leilão!</h3>
+				<p>
+					Autores: Gabriel,
+					<br>
+					Uéviton,
+					<br>
+					Alberto,
+					<br>
+					Thaisa,
+					<br>
+					Leandro,
+					<br>
+					Patrick,
+					<br>
+					Anderson,
+					<br>
+					Caique,
+					<br>
+					Gabriel.
+				</p>
+			</div>
+
+
+			<div class="card-redirect">
+				<form action="/login">
+					<a th:href="@{login}">
+						<button class="button">LOGIN</button>
+					</a>
+				</form>
+
+				<form action="/cadastroUsuario">
+					<a th:href="@{cadastroUsuario}">
+						<button class="button">CADASTRAR USUARIO</button>
+					</a>
+				</form>
+
+				<form action="/leiloes">
+					<a th:href="@{leiloes}">
+						<button class="button">LEILÕES</button>
+					</a>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

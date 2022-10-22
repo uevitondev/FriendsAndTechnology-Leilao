@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../stylesLs.css">
+
+	<title>Leilões</title>
+</head>
+
+<body>
+
+	<nav>
+		<H1>Leilao Friends And Technology</H1>
+		<div class="user-logged" th:if="${session.usuarioLogado}">
+			<strong th:text="${session.usuarioLogado}"></strong>
+
+			<form action="/logout" method="post">
+				<button class="button" type="submit">Sair</button>
+			</form>
+		</div>
+	</nav>
+
+	<div class="tamanho" th:if="${ms}">
+		<div class="alert-sucess">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong th:text="${ms}"></strong>
+		</div>
+	</div>
+
+	<header>
+		<div>
+			<h2 class="title">Leilões</h2>
+		</div>
+		<div>
+			<p>Aqui você acompanha a todas as ofertas disponíveis na página,
+				e pode participar dos leilões ou criar o seu!</p>
+		</div>
+
+		<div class="redirect-card">
+
+			<form action="/index">
+				<a th:href="@{index}">
+					<button class="button">HOME</button>
+				</a>
+			</form>
+			<form action="/login" th:if="${session.usuarioLogado} == null">
+				<a th:href="@{login}">
+					<button class="button">LOGIN</button>
+				</a>
+			</form>
+
+			<form action="/cadastroLeilao">
+				<a th:href="@{cadastroLeilao}">
+					<button class="button">CADASTRAR LEILÃO</button>
+				</a>
+			</form>
+		</div>
+	</header>
+
+	<div class="card-table">
+
+		<div class="filter-table">
+			<form class="filter-form" th:action="@{/leiloeskeyword}" method="get">
+				<div>
+					<label>Categoria:</label>
+					<select name="keyword">
+						<option value="" selected="selected">TODAS CATEGORIAS</option>
+						<option value="VEÍCULOS">VEÍCULOS</option>
+						<option value="AUTO E MOTOS">AUTO E MOTOS</option>
+						<option value="ELETRÔNICOS">ELETRÔNICOS</option>
+						<option value="MODA">MODA</option>
+						<option value="TELEFONIA e COMUNICAÇÃO">TELEFONIA e
+							COMUNICAÇÃO</option>
+						<option value="JÓIAS">JÓIAS</option>
+						<option value="CASA">CASA</option>
+						<option value="PET">PET</option>
+						<option value="ELETRODOMÉSTICOS">ELETRODOMÉSTICOS</option>
+						<option value="SAÚDE">SAÚDE</option>
+						<option value="FERRAMENTAS">FERRAMENTAS</option>
+					</select>
+				</div>
+
+				<div>
+					<label>Status:</label>
+					<select name="status">
+						<option value="VIGENTE">VIGENTE</option>
+						<option value="EXPIRADO">EXPIRADO</option>
+						<option value="ENCERRADO">ENCERRADO</option>
+					</select>
+					<button class="button" role="button" type="submit">FILTRAR</button>
+				</div>
+
+
+			</form>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Título</th>
+					<th>Categoria</th>
+					<th>Status</th>
+					<th>Valor Inicial</th>
+					<th>Tempo Restante</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="leilao, iterStat : ${lista}">
+					<td data-th-text="${iterStat.index}" data-label="indice"></td>
+					<td data-th-text="${leilao.titulo}" data-label="Título"></td>
+					<td data-th-text="${leilao.categoria}" data-label="Categoria"></td>
+					<td data-th-text="${leilao.status}" data-label="Status"></td>
+					<td data-th-text="'R$ ' + ${#numbers.formatDecimal(leilao.valorInicial, 1, 'DEFAULT', 2, 'DEFAULT')}"
+						data-label="Valor Inicial"></td>
+
+					<td data-label="Tempo Restante">
+						<div class="card-cronometro">
+							<p class="card-text" th:id="'timer-' + ${iterStat.index}">
+								<small class="text-muted" id="timer">Tempo até
+									expirar...</small>
+							</p>
+
+						</div>
+						<script th:inline="javascript">
+
+							var x = setInterval(function () {
+								var dateString = /*[[${leilao.dataLimite}]]*/;
+								var [dateComponents, timeComponents] = dateString.split(' ');
+								var [day, month, year] = dateComponents.split('-');
+								var [hours, minutes, seconds] = timeComponents.split(':');
+								var countDownDate = new Date(+year, month - 1, +day, +hours, +minutes, +seconds).getTime();
+								//console.log(countDownDate);
+								var index = [[${ iterStat.index }]];
+								//console.log(index);
+								var now = new Date().getTime();
+								var distance = countDownDate - now;
+								var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+								var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+								var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+								var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+								document.getElementById('timer-' + index).innerHTML = days + "d " + hours + "h "
+									+ minutes + "m " + seconds + "s ";
+								if (distance < 0) {
+									clearInterval(x);
+									document.getElementById('timer-' + index).innerHTML = "EXPIRED";
+								}
+							}, 1000);
+
+						</script>
+					</td>
+
+					<td>
+						<form method="GET" th:action="@{/leilao}">
+							<input type="hidden" name="id" th:value="${leilao.id}" />
+							<button class="button-leilao" type="submit">PARTICIPAR
+								DESTE LEILÃO</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+
+</html>

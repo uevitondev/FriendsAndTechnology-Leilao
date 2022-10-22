@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../stylesCadU.css">
+
+	<title>Cadastro de Usuário</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="content">
+			<h2 class="title">CRIAR CADASTRO</h2>
+
+			<h3>Preencha seus dados:</h3>
+
+			<form method="POST" action="/cadastroUsuario">
+
+				<div class="divs">
+					<label for="nome">
+						<strong>Nome</strong>
+					</label>
+					<input type="text" name="nome" class="name" required>
+				</div>
+
+				<div class="divs">
+					<label for="email">
+						<strong>Email</strong>
+					</label>
+					<input type="email" name="email" class="email" placeholder="@email.com" required>
+				</div>
+
+
+				<div class="divs">
+					<label for="senha">
+						<strong>Senha</strong>
+					</label>
+					<input type="password" name="senha" class="senha" placeholder="********" required>
+				</div>
+
+				<div class="divs">
+					<label for="cpf">
+						<strong>CPF/CNPJ</strong>
+					</label>
+					<input type="number" name="cpf" class="cpfCnpj" placeholder="999.999.999-99" required>
+				</div>
+
+				<div class="divs">
+					<label for="data">
+						<strong>Data de Nascimento</strong>
+					</label>
+					<input type="date" name="dataNascimento" class="data" required>
+				</div>
+
+				<div class="divs">
+					<label for="tel">
+						<strong>Telefone</strong>
+					</label>
+					<input type="number" name="telefone" class="tele" placeholder="(99) 99999-9999" required>
+				</div>
+
+				<div class="divs">
+					<label for="endereco">
+						<strong>Endereço</strong>
+					</label>
+					<input type="text" name="endereco" class="endereco" placeholder="Rua exemplo, nº - SP" required>
+				</div>
+
+				<div class="tamanho" th:if="${msg}">
+					<div class="alert">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong th:text="${msg}"></strong>
+					</div>
+				</div>
+
+				<a class="bt">
+					<button type="submit">CADASTRAR</button>
+				</a>
+
+			</form>
+
+
+			<form action="/index">
+				<a class="bt" th:href="@{index}">
+					<button class="button">VOLTAR</button>
+				</a>
+			</form>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

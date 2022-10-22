@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../stylesLog.css">
+
+<title>Login</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="tamanho" th:if="${ms}">
+			<div class="alert-sucess">
+				<span class="closebtn"
+					onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong th:text="${ms}"></strong>
+			</div>
+		</div>
+
+		<div class="content">
+			<h2 class="title">FAZER LOGIN</h2>
+
+			<h3>Preencha os campos:</h3>
+
+			<form action="" method="post">
+
+				<div>
+					<input type="email" name="email" th:name="email"
+						placeholder="Email..." required>
+				</div>
+				<div>
+					<input type="password" name="senha" th:name="senha"
+						placeholder="Senha..." required>
+				</div>
+
+				<div class="tamanho" th:if="${msg}">
+					<div class="alert">
+						<span class="closebtn"
+							onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong th:text="${msg}"></strong>
+					</div>
+				</div>
+
+				<a class="bt-" href="./telaPrincipal.html">
+					<button type="submit">Logar</button>
+				</a>
+
+			</form>
+
+			<div class="card-link">
+				<form action="/index">
+					<a class="bt" th:href="@{index}">
+						<button class="button">VOLTAR</button>
+					</a>
+				</form>
+
+
+				<form action="/cadastroUsuario">
+					<a th:href="@{cadastroUsuario}">
+						<button class="button">CADASTRAR USUARIO</button>
+					</a>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>

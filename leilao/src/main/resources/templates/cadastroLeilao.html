@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../stylesCadL.css">
+
+	<title>Cadastro de Leilão</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="content">
+			<h2 class="title">CADASTRO DE LEILÃO</h2>
+
+			<h3>Preencha as informações para cadastrar seu produto:</h3>
+
+			<form method="POST" action="/cadastroLeilao" enctype="multipart/form-data">
+
+				<div class="divs">
+					<label for="image">
+						<strong>Anexar Imagem</strong>
+					</label>
+					<input type="file" name="image" accept="image/*" required />
+				</div>
+
+				<div class="divs">
+					<label for="titulo">
+						<strong>Título</strong>
+					</label>
+					<input type="text" name="titulo" class="titulo" placeholder="Qual o seu produto?" required>
+				</div>
+
+				<div class="divs">
+					<label for="descricao">
+						<strong>Descrição</strong>
+					</label>
+
+					<textarea name="descricao" class="txtArea" placeholder="Descreva as informações do seu produto."
+						required></textarea>
+				</div>
+
+				<div class="divs">
+					<label for="categoria">
+						<strong>Categoria</strong>
+					</label>
+					<select name="categoria">
+						<option value="VEÍCULOS">VEÍCULOS</option>
+						<option value="AUTO E MOTOS">AUTO E MOTOS</option>
+						<option value="ELETRÔNICOS">ELETRÔNICOS</option>
+						<option value="MODA">MODA</option>
+						<option value="TELEFONIA e COMUNICAÇÃO">TELEFONIA e
+							COMUNICAÇÃO</option>
+						<option value="JÓIAS">JÓIAS</option>
+						<option value="CASA">CASA</option>
+						<option value="PET">PET</option>
+						<option value="ELETRODOMÉSTICOS">ELETRODOMÉSTICOS</option>
+						<option value="SAÚDE">SAÚDE</option>
+						<option value="FERRAMENTAS">FERRAMENTAS</option>
+					</select>
+					<label for="data">
+						<strong>Data Limite</strong>
+					</label>
+					<input type="date" id="dataLimite" name="dataLimite" class="data" required>
+				</div>
+
+
+				<div class="divs">
+					<label for="valorInicial">
+						<strong>Valor Inicial</strong>
+					</label>
+					<input type="number" name="valorInicial" class="valorInicial"
+						placeholder="Qual o Valor inicial da Oferta?" required>
+				</div>
+
+				<div class="divs">
+					<label for="lancMinimo">
+						<strong>Lance Mínimo</strong>
+					</label>
+					<input type="number" name="lanceMinimo" class="lanceMinimo"
+						placeholder="Qual o lance minimo, que um usuário pode dar na sua oferta?" required></input>
+				</div>
+
+
+
+				<div class="divs">
+					<input type="hidden" th:value="${session.usuarioLogado}" name="vendedor" required />
+				</div>
+
+				<div class="tamanho" th:if="${msg}">
+					<div class="alert">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong th:text="${msg}"></strong>
+					</div>
+				</div>
+
+				<a class="bt">
+					<button type="submit">CADASTRAR LEILÃO</button>
+				</a>
+
+			</form>
+
+			<form action="/index">
+				<a class="bt" th:href="@{index}">
+					<button class="button">VOLTAR</button>
+				</a>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
