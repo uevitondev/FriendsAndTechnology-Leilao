@@ -33,7 +33,7 @@ Pré-requisitos: Java 17
 
 ```bash
 # clonar repositório
-git clone https://github.com/uevitontech/Projeto-DSPesquisa-DevSuperior-1.0
+git clone https://github.com/uevitondev/FriendsAndTechnology-Leilao.git
 
 # entrar na pasta do projeto back end
 cd leilao
