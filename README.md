@@ -1,4 +1,5 @@
 # FriendsAndTechnology-Leilao
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/uevitondev/FriendsAndTechnology-Leilao/blob/main/license) 
 ## Projeto: Desenvolvimento do sistema  ( Leilão) .
 
 
