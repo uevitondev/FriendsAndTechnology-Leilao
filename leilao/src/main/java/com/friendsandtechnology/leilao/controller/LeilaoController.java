@@ -168,7 +168,7 @@ public class LeilaoController {
                 mv.addObject("msg", "Dê o lance novamente, não deve ser menor ou igual ao lance inicial!");
                 return mv;
 
-            } else if (Double.parseDouble(valorLance) <= leilao.getValorInicial() + leilao.getLanceMinimo()) {
+            } else if (Double.parseDouble(valorLance) <= leilao.getValorInicial() + leilao.getLanceMinimo() - 1) {
 
                 mv = buscaLeilao(idLeilao);
                 mv.setViewName("leilao");
@@ -187,6 +187,7 @@ public class LeilaoController {
                 leilaoService.salvarLeilao(leilao);
 
                 mv = buscaLeilao(idLeilao);
+                mv.addObject("ms", "Lance Efetuado!");
                 return mv;
 
             }
@@ -200,11 +201,11 @@ public class LeilaoController {
             }
             double max = Collections.max(listaValores);
 
-            if (Double.parseDouble(valorLance) <= max + leilao.getLanceMinimo()) {
+            if (Double.parseDouble(valorLance) <= max + leilao.getLanceMinimo() - 1) {
 
                 mv = buscaLeilao(idLeilao);
                 mv.setViewName("leilao");
-                mv.addObject("msg", "O lance deve ser maior que " + (max +
+                mv.addObject("msg", "O lance deve ser igual ou maior que " + (max +
                         leilao.getLanceMinimo()) + " .");
                 return mv;
 
