@@ -8,5 +8,64 @@ O qual beneficiará tanto quem deseja desapegar ou adquirir um produto.
 
 ### Descrição do Projeto (O que fará):
 Nosso projeto será uma página de leilão, onde as pessoas poderão anunciar seus produtos realizando um cadastro com “nome de usuário” e “senha”. 
-Podendo assim anunciar e dar lances nas mercadorias que tiverem interesse.  
+Podendo assim anunciar e dar lances nas mercadorias que tiverem interesse.
 
+## App Heroku
+Link: http://leilaoft.herokuapp.com/
+
+# Tecnologias utilizadas
+## Back end
+- Java
+- Spring Boot
+- JPA / Hibernate
+- MongoDB
+- Maven
+## Front end
+- HTML / CSS / JS / Thymeleaf
+## Implantação em produção
+- Back end / Front end: Heroku
+- Banco de Dados: MongoDB Atlas Database
+
+# Como executar o projeto
+
+## Back end
+Pré-requisitos: Java 17
+
+```bash
+# clonar repositório
+git clone https://github.com/uevitontech/Projeto-DSPesquisa-DevSuperior-1.0
+
+# entrar na pasta do projeto back end
+cd leilao
+
+# executar o projeto
+./mvnw spring-boot:run
+```
+## Modelo conceitual
+![Modelo Conceitual](https://github.com/uevitondev/assets/blob/main/leilao/conceitual/Diagrama%20de%20Classes.png)
+
+## Layout web
+![Web 1](https://github.com/uevitondev/assets/blob/main/leilao/web/home.png)
+
+![Web 2](https://github.com/uevitondev/assets/blob/main/leilao/web/cadastro%20usuario.png)
+
+![Web 3](https://github.com/uevitondev/assets/blob/main/leilao/web/login.png)
+
+![Web 4](https://github.com/uevitondev/assets/blob/main/leilao/web/leiloes.png0)
+
+![Web 5](https://github.com/uevitondev/assets/blob/main/leilao/web/cadastro%20leilao.png)
+
+![Web 6](https://github.com/uevitondev/assets/blob/main/leilao/web/leilao.jpeg)
+
+## Layout mobile
+![Mobile 1](https://github.com/uevitondev/assets/blob/main/leilao/mobile/home.jpeg)
+
+![Mobile 2](https://github.com/uevitondev/assets/blob/main/leilao/mobile/cadastro%20usuario.jpeg)
+
+![Mobile 3](https://github.com/uevitondev/assets/blob/main/leilao/mobile/login.jpeg)
+
+![Mobile 4](https://github.com/uevitondev/assets/blob/main/leilao/mobile/leiloes.jpeg)
+
+![Mobile 5](https://github.com/uevitondev/assets/blob/main/leilao/mobile/cadastro%20leilao.jpeg)
+
+![Mobile 6](https://github.com/uevitondev/assets/blob/main/leilao/mobile/leilao.jpeg)
