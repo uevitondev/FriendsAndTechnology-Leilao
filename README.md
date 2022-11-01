@@ -14,6 +14,13 @@ Podendo assim anunciar e dar lances nas mercadorias que tiverem interesse.
 ## App Heroku
 Link: http://leilaoft.herokuapp.com/
 
+## Vídeos Demonstrativos
+#### Web
+[![Watch the video](https://img.youtube.com/vi/Nu_lYpXbg1w/default.jpg)](https://youtu.be/Nu_lYpXbg1w)
+
+#### Mobile
+[![Watch the video](https://img.youtube.com/vi/65zije3WCm0/default.jpg)](https://youtu.be/65zije3WCm0)
+
 # Tecnologias utilizadas
 ## Back end
 - Java
