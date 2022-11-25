@@ -59,7 +59,7 @@ cd leilao
 
 ![Web 3](https://github.com/uevitondev/assets/blob/main/leilao/web/login.png)
 
-![Web 4](https://github.com/uevitondev/assets/blob/main/leilao/web/leiloes.png0)
+![Web 4](https://github.com/uevitondev/assets/blob/main/leilao/web/leiloes.png)
 
 ![Web 5](https://github.com/uevitondev/assets/blob/main/leilao/web/cadastro%20leilao.png)
 
